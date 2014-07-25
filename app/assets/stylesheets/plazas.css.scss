@@ -1,0 +1,131 @@
+// Place all the styles related to the plazas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ground_self_img {
+  float: left;
+  margin-right: 8px;
+}
+
+#ground_self_box a {
+  display: block;
+  color: black;
+}
+
+#pagelet_composer {
+  width: 562px;
+  background: #fff;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+}
+
+#content_wrapper #pagelet_composer {
+  width: 555px;
+  height: 174px;
+  margin-bottom: 10px;
+}
+
+.composer_down {
+  height: 106px;
+}
+
+.composer_down textarea {
+  border: none;
+  resize: none;
+}
+
+.composer_submit {
+  padding: 5px;
+  width: 562px;
+  background-color: #F0F0F0;
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-radius-bottomright: 5px;
+  -moz-border-radius-bottomleft: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+#pagelet_main .main_wrapper {
+  padding: 12px;
+  width: 562px;
+  background: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+  word-wrap: break-word;
+}
+
+#pagelet_main .main_wrapper_counter {
+  padding: 12px;
+  width: 562px;
+  background: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+  word-wrap: break-word;
+}
+
+#pagelet_main .main_wrapper_comment_send {
+  padding: 12px;
+  width: 562px;
+  background: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+}
+
+.main_wrapper_comment_list a {
+  color: black
+}
+
+#pagelet_main .main_wrapper_comment {
+  padding: 12px;
+  width: 562px;
+  background: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+  word-wrap: break-word;
+}
+
+.wrapper_top_image {
+  width: 200px;
+  display: block;
+  float: left;
+}
+
+.wrapper_top_image a {
+  color: black;
+}
+
+.wrapper_top_image img {
+  position: relative;
+  top: 6px;
+}
+
+.glyphicon-remove {
+  color: black;
+  cursor: pointer;
+}
+.glyphicon-remove:hover {
+  color: black;
+}
+
+.wrapper_top_content {
+  font-size: 15px;
+}
+
+#other_main .other_main_wrapper {
+  padding: 12px;
+  width: 350px;
+  height: 700px;
+  background: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+  word-wrap: break-word;
+  margin-bottom: 20px;
+}

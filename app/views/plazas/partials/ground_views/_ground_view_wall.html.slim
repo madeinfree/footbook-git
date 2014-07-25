@@ -1,0 +1,14 @@
+div id="content_wrapper"
+  div id="pagelet_composer"
+    div class="composer_top"
+      span
+          i class="glyphicon glyphicon-pencil" 
+          |  發表近況
+    div class="composer_down"
+      = form_for :post, url: users_posts_path, method: "post" do |f|
+        = f.text_area :text, cols: "90", rows: "5", placeholder: "想唸些什麼？"
+        div class="composer_submit text-right"
+          span class="label label-danger"
+              = flash[:error]
+          = f.submit "發表", class: "btn btn-info"
+  = render partial: "plazas/partials/ground_views/view_wall/view_wall", collection: @posts, as: :post 

@@ -1,0 +1,50 @@
+div id="pagelet_main"
+    div class="main_wrapper"
+        div class="wrapper_top_image"
+          img class="ground_self_img" src="data:image/webp;base64,UklGRkgDAABXRUJQVlA4IDwDAACQEQCdASpKAF4APlESlEojkdHN2DgFBLSACvOP7J2r/3DlGT2783wg7VP+I3pTJPEBpApkH/T8rP0h+v3wFfyL+u/83r6eg7+uBWj5u6BsyL/yB132KT+bpRh/1S0pinGukQ19Q6v9SW6f9MMsuriw1leHn4Fj2Lu7azg6rEXPN3S5cRbgjjw55lre0E8Uhr/u8vdjAAD+2uQMx2Dl87b6Mqh6WGxIGBKumfU1ixqNQz3pXyiZTkfaUKTR9L8KK2rSgkenWEgAQAEMh4WbxEBG/vzF+OfQc/UQbyz+85N09E6ARbwW0AwVBcZsGIG+f17bz336HmHFaElMoKpR7XbcJx7sAKTIp/8A4evtNf+lxzqOMrIgsOtc8OxnTzPSZkYLZ7VyYLYOZ/xnya2tPi/OEKkebY+P9IPjKpKheigZ7KMJzjCuAm/f622IT3kxAh93Hd/DcmGZ2j44/WII0Krew+EPevmDYJiBzA1YNIoMo6OTc9qbqK78l+B/+0/jjQdmyvqnBYE/S0z3iDuHkfbjBN0vu4pG/4//6+EZRO9AFZemrStggKTs72eY6nthwq/536XJ1ufoz+fEY4OWDekvLrcy6oph3JFwFz4baaTwLDMMZvMytK/wZN48Yp8ExP9LeIwL7ZMshI464vWTI2jrDUt4nUb28aNCa+koNLga2Cui7/sMFSXgTH3z+7Py1VCnJjUd480LpyI94lEfJmkRj9EtrpUeAsRwLLen6QSfbW4qQZqxZnPtmE3affGZTYccDwbyPX/7uKnAr6kwsw7H4fsthW0x9WLyZW4mKFrqKjcPSX/NO93/zXMdMXO8tEA1yfErDSXB0NNgCMC9Tzkf0YvobL4hhxP7NdWTo1SGJKFJZuD1+s/69TDYrTE6Kg9EmJB4/hUhj4HFX+1K39r/9ps9ahFNETe91TeH2RsaWXvYI/9Nme/QAD07a/YCq2U1mLzFFFcP3yVfBjg/JcukHDzsWgcamjQxPY+DAQO5OSxJLSipUSstLLYODlOg58aiwdsTNa4+Wl5oms9Ql6hYvX9m8lLC5vYfJ2/huXVU0FiePeSvuSXJF3hxWEc2iY0ltB6/ot1Ib4AAAAA=" width="40" height="40"
+          h5
+            = link_to post.user.name
+          h6 
+            = post.created_at.strftime('%Y-%m-%d %H:%M:%S') 
+        - if current_user && post_owner?(post, current_user)
+          div class="wrapper_top_delete pull-right"
+            = link_to "", users_post_path(post), method: "DELETE",class: "glyphicon glyphicon-remove", data: { confirm: "移除此發表？" }
+        span class="clearfix"
+        div class="wrapper_mid_content"
+          = simple_format(post.text)
+        div class="wrapper_bot_operating"
+          p
+            | 
+            - if is_point?(post, current_user)
+              = link_to "收回爛", bad_point_destroy_users_post_path(post), method: "post"
+            - else
+              = link_to "爛", bad_point_users_post_path(post), method: "post"
+            | ・
+            a href="#" 留言
+            | ・
+            a href="#" 檢舉
+    div class="main_wrapper_counter"
+      i class="glyphicon glyphicon-thumbs-down"
+        = link_to post.post_points.length, "#"
+        | ・
+        i class="glyphicon glyphicon-user" 
+        = link_to post.comments.length, "#"
+        | ・
+        i class="glyphicon glyphicon-trash"
+        = link_to 0, "#" 
+    div class="main_wrapper_comment"
+      - post.comments.each do |comment|
+        div class="main_wrapper_comment_list"
+          small
+            a href="#"
+              = comment.user.name
+            |  說 
+            = comment.text
+            |  於 
+            = comment.created_at.strftime('%Y-%m-%d %H:%M:%S')
+    div class="main_wrapper_comment_send"
+      = form_for :comments, url: users_post_comments_path(post), method: "post" do |f|
+        div
+          img class="ground_self_img" src="data:image/webp;base64,UklGRkgDAABXRUJQVlA4IDwDAACQEQCdASpKAF4APlESlEojkdHN2DgFBLSACvOP7J2r/3DlGT2783wg7VP+I3pTJPEBpApkH/T8rP0h+v3wFfyL+u/83r6eg7+uBWj5u6BsyL/yB132KT+bpRh/1S0pinGukQ19Q6v9SW6f9MMsuriw1leHn4Fj2Lu7azg6rEXPN3S5cRbgjjw55lre0E8Uhr/u8vdjAAD+2uQMx2Dl87b6Mqh6WGxIGBKumfU1ixqNQz3pXyiZTkfaUKTR9L8KK2rSgkenWEgAQAEMh4WbxEBG/vzF+OfQc/UQbyz+85N09E6ARbwW0AwVBcZsGIG+f17bz336HmHFaElMoKpR7XbcJx7sAKTIp/8A4evtNf+lxzqOMrIgsOtc8OxnTzPSZkYLZ7VyYLYOZ/xnya2tPi/OEKkebY+P9IPjKpKheigZ7KMJzjCuAm/f622IT3kxAh93Hd/DcmGZ2j44/WII0Krew+EPevmDYJiBzA1YNIoMo6OTc9qbqK78l+B/+0/jjQdmyvqnBYE/S0z3iDuHkfbjBN0vu4pG/4//6+EZRO9AFZemrStggKTs72eY6nthwq/536XJ1ufoz+fEY4OWDekvLrcy6oph3JFwFz4baaTwLDMMZvMytK/wZN48Yp8ExP9LeIwL7ZMshI464vWTI2jrDUt4nUb28aNCa+koNLga2Cui7/sMFSXgTH3z+7Py1VCnJjUd480LpyI94lEfJmkRj9EtrpUeAsRwLLen6QSfbW4qQZqxZnPtmE3affGZTYccDwbyPX/7uKnAr6kwsw7H4fsthW0x9WLyZW4mKFrqKjcPSX/NO93/zXMdMXO8tEA1yfErDSXB0NNgCMC9Tzkf0YvobL4hhxP7NdWTo1SGJKFJZuD1+s/69TDYrTE6Kg9EmJB4/hUhj4HFX+1K39r/9ps9ahFNETe91TeH2RsaWXvYI/9Nme/QAD07a/YCq2U1mLzFFFcP3yVfBjg/JcukHDzsWgcamjQxPY+DAQO5OSxJLSipUSstLLYODlOg58aiwdsTNa4+Wl5oms9Ql6hYvX9m8lLC5vYfJ2/huXVU0FiePeSvuSXJF3hxWEc2iY0ltB6/ot1Ib4AAAAA=" width="25" height="25" style="position: relative; top: 2px;"
+        = f.text_field :text, placeholder: "留言", class: "glyphicon glyphicon-exclamation-sign", style: "background-color: transparent; border: 0; -webkit-box-sizing: border-box; outline: 0; width: 450px; height: 30px;"
+        = f.submit "回覆", class: "btn btn-success btn-sm pull-right"

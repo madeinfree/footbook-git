@@ -1,0 +1,36 @@
+#ground_account_box {
+  position: fixed;
+  margin-top: 60px;
+}
+
+.account_title_v1 {
+  display: block;
+  text-align: center;
+}
+
+.account_title_v1 b{
+  position: relative;
+  top: -1.5px;
+  left: 3px;
+}
+
+#account-lists {
+  height: 500px;
+  overflow: auto;
+}
+
+#account-lists .list {
+  position: relative;
+  width: 165px;
+  background: #fff;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+}
+
+.add-account {
+  position: absolute;
+  right: 0px;
+  line-height: 32px;
+  cursor: pointer;
+}
